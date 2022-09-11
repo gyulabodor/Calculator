@@ -1,10 +1,13 @@
 import express from "express";
 import cors from "cors";
 import { PORT,ORIGIN } from "./configuration";
+import { errorHandler } from "./middlewares";
 
 const app = express();
 app.use(express.json());
 app.use(cors({origin: ORIGIN, credentials: true}));
+app.use(errorHandler);
+
 app.listen(PORT, () =>{
     console.log(`Server is running on port: ${PORT}`);
 })
