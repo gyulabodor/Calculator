@@ -1,3 +1,3 @@
 import "dotenv/config";
 
-export const { PORT, ORIGIN } = process.env; 
+export const { PORT, ORIGIN, FILENAME } = process.env; 
