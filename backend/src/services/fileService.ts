@@ -9,3 +9,9 @@ export const writeFileAsync = async (filename: string, result: string): Promise<
     return "Data successfully saved!";
 }
 
+export const readFileAsync = async (filename: string) : Promise<number> => {
+
+    const number = parseInt((await promises.readFile(filename)).toString()) 
+
+    return number;
+}

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { writeFileAsync } from "../services";
+import { readFileAsync, writeFileAsync } from "../services";
 import { FILENAME } from "../configuration";
 
 export const calculatorRouter = Router();
@@ -18,3 +18,13 @@ calculatorRouter.post("/save" ,async (req,res,next) =>{
 
 });
 
+calculatorRouter.post("/memory", async (req,res,next) =>{
+    
+    try {
+        const number = await readFileAsync(FILENAME || "./src/data/result.txt");
+
+        res.send({number: number})
+    } catch (error) {
+        next(error);
+    }
+})
