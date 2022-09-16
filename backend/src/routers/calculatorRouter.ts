@@ -14,7 +14,6 @@ calculatorRouter.post("/save" ,async (req,res,next) =>{
     } catch (error) {
         next(error);
     }
-
 });
 
 calculatorRouter.get("/memory", async (req,res,next) =>{
@@ -22,8 +21,7 @@ calculatorRouter.get("/memory", async (req,res,next) =>{
     try {
         const number = await readFileAsync(FILENAME || "./src/data/result.txt");
         res.send({number: number});
-
     } catch (error) {
         next(error);
     }
-})
+});
