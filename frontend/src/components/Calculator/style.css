@@ -45,3 +45,9 @@ button{
 button:hover{
     background: rgb(91, 91, 176)
 }
+.info-box{
+    text-align: center;
+    color:#fff;
+    font-size: 24px;
+    font-weight: 700;
+}
