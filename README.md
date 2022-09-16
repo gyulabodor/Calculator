@@ -1,4 +1,4 @@
 # Calculator
-## Interview project for Tappointment software developer company
+## Interview project
 
 - Using Express TS for backend and React TS for frontend.
