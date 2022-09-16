@@ -6,11 +6,10 @@ export const calculatorRouter = Router();
 
 calculatorRouter.post("/save" ,async (req,res,next) =>{
     
-    const number = req.body.result;
+    const number = req.body.prevInput;
     
     try {
-       const result = await writeFileAsync(FILENAME || "./src/data/result.txt", number);
-       
+       const result = await writeFileAsync(FILENAME || "./src/data/result.txt", number.toString());
        res.status(201).send({success: result});
     } catch (error) {
         next(error);
@@ -18,12 +17,12 @@ calculatorRouter.post("/save" ,async (req,res,next) =>{
 
 });
 
-calculatorRouter.post("/memory", async (req,res,next) =>{
+calculatorRouter.get("/memory", async (req,res,next) =>{
     
     try {
         const number = await readFileAsync(FILENAME || "./src/data/result.txt");
+        res.send({number: number});
 
-        res.send({number: number})
     } catch (error) {
         next(error);
     }
