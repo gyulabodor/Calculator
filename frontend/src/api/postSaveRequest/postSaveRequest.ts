@@ -1,8 +1,9 @@
-import { SaveRequest } from "./types";
-import { request } from "../request";
 
-export const fetchSave = (body: { result: number }) =>
-  request<SaveRequest>({
+import {request} from "../request"
+import { PostSaveResultResponse } from "./type";
+
+export const fetchSave = (body: { prevInput : string }) =>
+  request<PostSaveResultResponse>({
     endpoint: "save",
     config: {
       method: "POST",

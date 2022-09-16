@@ -5,7 +5,7 @@ export const request = async <T>({
   config,
   endpoint,
 }: IRequest): Promise<T> => {
-  const response = await fetch(`${API_URL}${endpoint}`, {
+  const response = await fetch(`http://localhost:4000/${endpoint}`, {
     ...config,
     credentials: "include",
   });

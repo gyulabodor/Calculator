@@ -1,1 +1,1 @@
-export * from "./postSaveRequest"
+export { fetchSave } from "./postSaveRequest"

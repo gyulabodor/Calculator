@@ -1,0 +1,1 @@
+export { fetchMemory } from "./getShowRequest"
