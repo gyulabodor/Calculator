@@ -113,7 +113,7 @@ export const Calculator = () => {
             <div className="info-box">{infoMessage}</div>
             <div className="calc-grid">
                     <div className="screen">
-                        <div className="previous-input">{prevInput} {operator}</div>
+                        <div className="previous-input">{parseFloat(prevInput).toFixed(3)} {operator}</div>
                         <div className="current-input">{currentInput} </div>
                     </div>
                     <button onClick={handleClearClick}>Clear</button>
