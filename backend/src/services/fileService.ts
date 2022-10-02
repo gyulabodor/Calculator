@@ -8,6 +8,6 @@ export const writeFileAsync = async (filename: string, result: string): Promise<
 }
 
 export const readFileAsync = async (filename: string) : Promise<number> => {
-    const number = parseInt((await promises.readFile(filename)).toString()); 
+    const number = parseFloat((await promises.readFile(filename)).toString()); 
     return number;
 }
