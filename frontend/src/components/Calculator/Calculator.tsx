@@ -59,7 +59,11 @@ export const Calculator = () => {
                 }
                 break;
             default:
-                setCurrentInput(currentInput + btnValue);
+                if(prevInput.length !== 0 && operator === ""){
+                    setInfoMessage("You have to make an operation!");
+                }else{
+                    setCurrentInput(currentInput + btnValue);
+                }
                 break;
         }
 
@@ -67,6 +71,9 @@ export const Calculator = () => {
         {
             setCurrentInput(btnValue);
         }
+
+
+
     }
     const handleOperatorClick = (e : React.MouseEvent<HTMLButtonElement>) => {
         setInfoMessage("");
