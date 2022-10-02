@@ -69,9 +69,11 @@ button:hover{
     background: rgb(91, 91, 176)
 }
 .info-box{
+    height: 45px;
+    max-height: 45px;
     text-align: center;
     color:#fff;
     font-size: 22px;
     font-weight: 700;
-    padding: 10px;
+    padding: 8px;
 }

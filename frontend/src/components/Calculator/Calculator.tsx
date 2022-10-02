@@ -71,10 +71,8 @@ export const Calculator = () => {
         {
             setCurrentInput(btnValue);
         }
-
-
-
     }
+
     const handleOperatorClick = (e : React.MouseEvent<HTMLButtonElement>) => {
         setInfoMessage("");
         const btnOperator = e.currentTarget.innerText;
@@ -116,7 +114,7 @@ export const Calculator = () => {
         setOperator("");
     }
 
-    const handleSaveClick = () =>{
+    const handleSaveClick = () => {
 
         if (prevInput !== "") {
             setInfoMessage("");
@@ -131,8 +129,7 @@ export const Calculator = () => {
             })
         }
         else{
-            setInfoMessage(`Only the result field could be saved!
-            \nPlease hit = before you start saving!`)
+            setInfoMessage(`Only the result field could be saved!`)
         }
         
 
