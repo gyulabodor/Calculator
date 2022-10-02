@@ -14,6 +14,29 @@ export const Calculator = () => {
         return eval(arr.join("")); 
     }
     
+    const fixDecimalPlaces = (result: string) => {
+
+       let fixedResult = parseFloat(result)
+        
+       if(fixedResult.toString().includes(".")){
+
+        const splittedResult = fixedResult.toString().split(".")
+        const decimals = splittedResult[1];
+        
+        let numToFix;
+        if (decimals.length >= 4) {
+            numToFix = 4
+        }
+        else{
+            numToFix = decimals.length
+        }
+        return fixedResult.toFixed(numToFix);
+       }
+       else{
+        return fixedResult.toString();
+       }
+    }
+
     const handleDigitClick = (e : React.MouseEvent<HTMLButtonElement>) => {
         setInfoMessage("");
 
@@ -60,8 +83,8 @@ export const Calculator = () => {
         if(prevInput !== ""){
             if (operator !== "") {
                 setOperator(btnOperator);
-             }
-            setPrevInput(evaluate([prevInput,operator,currentInput]));
+            }
+            setPrevInput(fixDecimalPlaces(evaluate([prevInput,operator,currentInput])));
             setOperator(btnOperator);
             setCurrentInput("");
         }
@@ -69,7 +92,12 @@ export const Calculator = () => {
 
     const handleEvaluateClick = () => {
         setInfoMessage("");
-        setPrevInput(evaluate([prevInput,operator,currentInput]));
+        if (currentInput !== "") {
+            setPrevInput(fixDecimalPlaces(evaluate([prevInput,operator,currentInput])));
+        }
+        else{
+            setInfoMessage("You have not added number to the input field!")
+        }
         setCurrentInput("");
         setOperator("");
     }
@@ -82,7 +110,9 @@ export const Calculator = () => {
     }
 
     const handleSaveClick = () =>{
-        setInfoMessage("");
+
+        if (prevInput !== "") {
+            setInfoMessage("");
         const body = { prevInput };
         
             fetchSave(body)
@@ -92,6 +122,12 @@ export const Calculator = () => {
             .catch ((err) => {
                 setInfoMessage(err.message);
             })
+        }
+        else{
+            setInfoMessage(`Only the result field could be saved!
+            \nPlease hit = before you start saving!`)
+        }
+        
 
 
     };
@@ -106,15 +142,17 @@ export const Calculator = () => {
             setInfoMessage(err.message);
         })
     }
-
+    
     return (
     
         <div className="calc-wrapper">
             <div className="info-box">{infoMessage}</div>
             <div className="calc-grid">
                     <div className="screen">
-                        <div className="previous-input">{parseFloat(prevInput).toFixed(3)} {operator}</div>
-                        <div className="current-input">{currentInput} </div>
+                        <div className="screen-title">Operation & result</div> 
+                        <div className="previous-input">{prevInput} {operator}</div>
+                        <div className="screen-title">Input</div> 
+                        <div className="current-input">{currentInput}</div>
                     </div>
                     <button onClick={handleClearClick}>Clear</button>
                     <button onClick={handleSaveClick}>Save</button>

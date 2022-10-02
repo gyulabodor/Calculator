@@ -29,9 +29,32 @@
     word-break: break-all;
     background-color: rgb(255, 255, 255, .9);
     border-radius: 6px;
-    padding: 5px;
+    padding: 7px;
     margin-bottom: 5px;
 }
+
+.previous-input{
+    height: 50px;
+    max-height: 50px;
+    width: 100%;
+    text-align: right;
+    border-bottom: 8px solid #bb4e77;
+    border-radius: 5px;
+}
+
+.current-input{
+    height: 50px;
+    max-height: 50px;
+   
+}
+
+.screen-title{
+    width: 100%;
+    font-size: 20px;
+    text-align: right;
+    color:rgba(51, 51, 101, .2)
+}
+
 button{
     margin: 3px;
     background-color: rgb(51, 51, 101);
@@ -48,6 +71,7 @@ button:hover{
 .info-box{
     text-align: center;
     color:#fff;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
+    padding: 10px;
 }
