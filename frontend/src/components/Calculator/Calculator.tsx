@@ -24,8 +24,8 @@ export const Calculator = () => {
         const decimals = splittedResult[1];
         
         let numToFix;
-        if (decimals.length >= 4) {
-            numToFix = 4
+        if (decimals.length >= 6) {
+            numToFix = 6
         }
         else{
             numToFix = decimals.length
@@ -51,11 +51,17 @@ export const Calculator = () => {
                 if (currentInput.length > 1 || currentInput[0] !== "0") {
                     setCurrentInput(currentInput + btnValue)
                 }
+                if (currentInput[1] !== ".") {
+                    setCurrentInput(currentInput + ".")
+                }
                 break;
             case ".":
                 if(currentInput.length !== 0 && !currentInput.includes("."))
                 {
                     setCurrentInput(currentInput + btnValue);
+                }
+                if (currentInput.length === 0) {
+                    setCurrentInput("0.");
                 }
                 break;
             default:
@@ -101,7 +107,7 @@ export const Calculator = () => {
             setPrevInput(fixDecimalPlaces(evaluate([prevInput,operator,currentInput])));
         }
         else{
-            setInfoMessage("You have not added number to the input field!")
+            setInfoMessage("You have not added number to input field!")
         }
         setCurrentInput("");
         setOperator("");
