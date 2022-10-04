@@ -51,8 +51,8 @@ export const Calculator = () => {
                 if (currentInput.length > 1 || currentInput[0] !== "0") {
                     setCurrentInput(currentInput + btnValue)
                 }
-                if (currentInput[1] !== ".") {
-                    setCurrentInput(currentInput + ".")
+                if (currentInput.length === 0) {
+                    setCurrentInput("0.");
                 }
                 break;
             case ".":
